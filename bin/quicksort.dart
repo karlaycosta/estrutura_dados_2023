@@ -6,11 +6,12 @@ List<int> quickSort(List<int> lista) {
   final direita = <int>[];
   final pivo = lista[0];
   for (var i = 1; i < lista.length; i++) {
-    if (lista[i] < pivo) {
-      esquerda.add(lista[i]);
-    } else {
-      direita.add(lista[i]);
-    }
+    lista[i] < pivo ? esquerda.add(lista[i]) : direita.add(lista[i]);
+    // if (lista[i] < pivo) {
+    //   esquerda.add(lista[i]);
+    // } else {
+    //   direita.add(lista[i]);
+    // }
   }
-  return [...quickSort(esquerda), pivo, ...quickSort(direita)];
+  return [...(esquerda.length > 1 ? quickSort(esquerda) : esquerda), pivo, ...quickSort(direita)];
 }
