@@ -1,4 +1,4 @@
-void bubleSort(List<int> lista) {
+void bubbleSort(List<int> lista) {
   for (var i = 0; i < lista.length; i++) {
     for (var ii = 0; ii < lista.length - 1; ii++) {
       if (lista[ii] > lista[ii + 1]) {
