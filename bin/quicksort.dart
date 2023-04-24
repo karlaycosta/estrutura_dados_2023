@@ -19,7 +19,10 @@ List<int> quickSort(List<int> lista) {
 }
 
 void quickSortLomuto(List lista, int primeiro, int ultimo) {
+  if (primeiro >= ultimo) {
+    return;
+  }
   final indicePivo = partcaoLomuto(lista, primeiro, ultimo);
-  quickSortLomuto(lista, primeiro, indicePivo - 1);
-  quickSortLomuto(lista, indicePivo + 1, ultimo);
+  quickSortLomuto(lista, primeiro, indicePivo - 1); // Lista da esquerda
+  quickSortLomuto(lista, indicePivo + 1, ultimo); // Lista da direita
 }

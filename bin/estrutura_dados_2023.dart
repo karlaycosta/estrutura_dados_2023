@@ -12,7 +12,7 @@ void main() {
 
   //     índice  0  1  2   3  4  5   6  7   8
   final lista = [8, 2, 10, 0, 9, 18, 9, -1, 5];
-  //quickSortLomuto(lista, 0, lista.length - 1);
+  quickSortLomuto(lista, 0, lista.length - 1);
   print(lista);
   // final temp = Stopwatch()..start();
   // print(quickSort(lista));
