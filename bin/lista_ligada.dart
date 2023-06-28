@@ -2,8 +2,10 @@ void main() {
   final lista = LinkedList<int>();
   lista.adicionar(10);
   lista.adicionar(20);
-  lista.adicionar(30);
-  print(lista.noEm(3)?.valor);
+  print('Antes: $lista');
+  final temp = lista.noEm(0);
+  lista.inserirDepois(temp!, 30);
+  print('Depois: $lista');
 }
 
 class Node<T> {
@@ -20,7 +22,7 @@ class Node<T> {
 class LinkedList<E> {
   Node<E>? inicio;
   Node<E>? fim;
-  
+
   bool get vazio => inicio == null;
 
   void empurrar(E valor) {
@@ -45,6 +47,15 @@ class LinkedList<E> {
       contador++;
     }
     return atual;
+  }
+
+  Node<E> inserirDepois(Node<E> node, E valor) {
+    if (fim == node) {
+      adicionar(valor);
+      return fim!;
+    }
+    node.proximo = Node(valor, proximo: node.proximo);
+    return node.proximo!;
   }
 
   @override
