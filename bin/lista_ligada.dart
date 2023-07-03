@@ -1,11 +1,12 @@
 void main() {
   final lista = LinkedList<int>();
-  lista.adicionar(10);
-  lista.adicionar(20);
-  print('Antes: $lista');
-  final temp = lista.noEm(0);
-  lista.inserirDepois(temp!, 30);
-  print('Depois: $lista');
+  lista.adicionar(10);// 0
+  lista.adicionar(20);// 1
+  lista.adicionar(30);// 2
+  lista.adicionar(40);// 3
+  final temp = lista.noEm(2);
+  print(lista.removeAfter(temp!));
+  print('$lista');
 }
 
 class Node<T> {
@@ -56,6 +57,43 @@ class LinkedList<E> {
     }
     node.proximo = Node(valor, proximo: node.proximo);
     return node.proximo!;
+  }
+
+  E? pop() {
+    final value = inicio?.valor;
+    inicio = inicio?.proximo;
+    if (vazio) {
+      fim = null;
+    }
+    return value;
+  }
+
+  E? removeLast() {
+    // 1
+    if (inicio?.proximo == null) {
+      return pop();
+    }
+    // ini         fim
+    // 10 -> 20 -> 30 -> 40
+    //             *
+    var current = inicio;
+    while (current!.proximo != fim) {
+      current = current.proximo;
+    }
+    // 3
+    final value = fim?.valor;
+    fim = current;
+    fim?.proximo = null;
+    return value;
+  }
+  // 10 -> 20 -> 40
+  E? removeAfter(Node<E> node) {
+    final value = node.proximo?.valor;
+    if (node.proximo == fim) {
+      fim = node;
+    }
+    node.proximo = node.proximo?.proximo;
+    return value;
   }
 
   @override
